@@ -27,6 +27,27 @@ class Wine
      */
     private $millesime;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateMiseEnCave;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $potentielDeGarde;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cave::class, inversedBy="Wines")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cave;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +73,54 @@ class Wine
     public function setMillesime(string $millesime): self
     {
         $this->millesime = $millesime;
+
+        return $this;
+    }
+
+    public function getDateMiseEnCave(): ?\DateTimeInterface
+    {
+        return $this->dateMiseEnCave;
+    }
+
+    public function setDateMiseEnCave(\DateTimeInterface $dateMiseEnCave): self
+    {
+        $this->dateMiseEnCave = $dateMiseEnCave;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getPotentielDeGarde(): ?\DateTimeInterface
+    {
+        return $this->potentielDeGarde;
+    }
+
+    public function setPotentielDeGarde(\DateTimeInterface $potentielDeGarde): self
+    {
+        $this->potentielDeGarde = $potentielDeGarde;
+
+        return $this;
+    }
+
+    public function getCave(): ?Cave
+    {
+        return $this->cave;
+    }
+
+    public function setCave(?Cave $cave): self
+    {
+        $this->cave = $cave;
 
         return $this;
     }
